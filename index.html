@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESSENTIALS.COM</title>
+    <meta name="description" content="Premium domain portfolio featuring essentials.com and international TLDs. A rare collection of one-word domains for a trusted global brand.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://essentials.com">
+    <meta property="og:title" content="ESSENTIALS.COM">
+    <meta property="og:description" content="Premium domain portfolio featuring essentials.com and international TLDs. A rare collection of one-word domains for a trusted global brand.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://essentials.com">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ESSENTIALS.COM">
+    <meta name="twitter:description" content="Premium domain portfolio featuring essentials.com and international TLDs. A rare collection of one-word domains for a trusted global brand.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Inter+Tight:wght@900&display=swap" rel="stylesheet">
+    <style>
+        /* Size-adjusted fallback fonts to minimize layout shift during font swap */
+        @font-face {
+            font-family: 'Inter Fallback';
+            src: local('Arial');
+            size-adjust: 107%;
+            ascent-override: 90%;
+            descent-override: 22%;
+            line-gap-override: 0%;
+        }
+        @font-face {
+            font-family: 'Inter Tight Fallback';
+            src: local('Arial Black'), local('Arial Bold');
+            size-adjust: 99%;
+            ascent-override: 90%;
+            descent-override: 22%;
+            line-gap-override: 0%;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --dot-color: #FF6A00;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #000000;
+                --text-color: #ffffff;
+            }
+        }
+
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Inter', 'Inter Fallback', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .logo-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cta-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+
+        .cta {
+            font-size: 1rem;
+            color: var(--text-color);
+            opacity: 0.6;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            background: none;
+            border: none;
+            font-family: 'Inter', 'Inter Fallback', sans-serif;
+        }
+
+        .cta:hover {
+            opacity: 1;
+        }
+
+        .cta-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-links a {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            opacity: 0.4;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .cta-links a:hover {
+            opacity: 1;
+        }
+
+        .logo {
+            font-family: 'Inter Tight', 'Inter Tight Fallback', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 8vw, 6rem);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.02em;
+        }
+
+        .logo .char {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .logo .dot {
+            color: var(--dot-color);
+            margin: 0 -0.05em;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .logo .dot:hover {
+            transform: scale(1.1);
+        }
+
+        .logo .char-c {
+            margin-left: -0.05em;
+        }
+
+        .domains {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 2rem;
+        }
+
+        .domains a {
+            font-family: 'Inter Tight', 'Inter Tight Fallback', sans-serif;
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            text-decoration: none;
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.02em;
+        }
+
+        .domains a:hover {
+            opacity: 1;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+
+        .domains a .char {
+            display: inline-block;
+        }
+
+        .domains a .dot {
+            color: var(--dot-color);
+            margin: 0 -0.05em;
+        }
+
+        .domains a .char-c {
+            margin-left: -0.05em;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: opacity 0.2s ease;
+            opacity: 0.5;
+        }
+
+        .theme-toggle:hover {
+            opacity: 1;
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-color);
+            stroke: var(--text-color);
+            stroke-width: 2;
+            stroke-linecap: round;
+            transition: fill 0.3s ease, stroke 0.3s ease;
+        }
+
+        .theme-toggle .icon-sun {
+            display: none;
+        }
+
+        .theme-toggle .icon-moon {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-sun {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-moon {
+            display: none;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--bg-color);
+            color: var(--text-color);
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            padding: 2rem;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--dot-color);
+            box-shadow: 0 0 40px rgba(255, 106, 0, 0.3);
+            scrollbar-width: thin;
+            scrollbar-color: var(--dot-color) transparent;
+        }
+
+        .modal::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .modal::-webkit-scrollbar-thumb {
+            background: var(--dot-color);
+            border-radius: 4px;
+        }
+
+        .modal::-webkit-scrollbar-thumb:hover {
+            background: #ff8533;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        @media (min-width: 768px) {
+            .modal {
+                width: 50%;
+                padding: 3rem;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+            padding: 0.5rem;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal-close svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-color);
+            stroke-width: 2;
+        }
+
+        .modal h2 {
+            font-family: 'Inter Tight', 'Inter Tight Fallback', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dot-color);
+        }
+
+        .modal h3 {
+            font-family: 'Inter Tight', 'Inter Tight Fallback', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .modal ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .modal li {
+            line-height: 1.6;
+            margin-bottom: 0.25rem;
+        }
+
+        .modal a {
+            color: var(--dot-color);
+            text-decoration: none;
+        }
+
+        .modal a:hover {
+            text-decoration: underline;
+        }
+
+        .modal .reference-list {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            padding-left: 2.5rem;
+        }
+
+        .modal .reference-list li {
+            margin-bottom: 0.15rem;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+    </button>
+    <div class="logo-container">
+        <div class="logo" id="main-logo"></div>
+    </div>
+    <div class="cta-section">
+        <button class="cta" id="open-modal">Domains for sale or lease</button>
+        <div class="cta-links" id="cta-links"></div>
+    </div>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6l12 12" fill="none"/>
+                </svg>
+            </button>
+
+            <h2>Register your interest</h2>
+            <p>Serious offers are invited for this unique collection — for the confidential and secure transfer to the successful winning investor.</p>
+            <p>Please review the portfolio, prospectus and guidance below.</p>
+
+            <h3>Portfolio</h3>
+            <p>We are pleased to present a unique opportunity to acquire a prestigious and memorable collection of domains:</p>
+            <ul>
+                <li>essentials.com</li>
+                <li>essentials.net</li>
+                <li>essentials.co.uk</li>
+                <li>essentials.uk</li>
+                <li>essentials.eu</li>
+                <li>essentials.us</li>
+                <li>essentials.cn</li>
+                <li>essentials.hk</li>
+                <li>essentials.tw</li>
+                <li>essentials.fr</li>
+            </ul>
+            <p>Other essentials. top-level domain names may be available for further acquisitions. Contact details or brokerage assistance for those we have had previous correspondence with are also available.</p>
+            <p>These domains took many years to collect, and will not be sold separately. All bids should be calculated to represent the unique value of this rare and untainted collection — with assurance of complete commercial confidentiality, and the option for payment in crypto, if required.</p>
+
+            <h3>Prospectus</h3>
+            <p>This is a rare opportunity to acquire a family of attractive, investable and prestigious one-word top-level domains for a trusted international brand — with a single negotiation that avoids any high-level cyber-squatting risks in attempting to acquire the set discreetly from multiple parties, likely also aware of these difficulties.</p>
+            <p>"Essentials" is easy to type, spell, pronounce, underline and suggestive of associated brand values. It's one of the most common keywords used in Anglo-American sales and marketing, often a byline for own-brand ranges, collections or educational material.</p>
+            <p>Essentials.com alone attracts regular and significant prospecting offers — although, it has been retained for many years to gather the wider international collection of matching top-level domains, to maximise the audience potential for the ultimate owners.</p>
+            <p>The domains have no prior usage and remain a blank canvas for the imagination of their final trustees and investors.</p>
+
+            <h3>Valuation</h3>
+            <p>As with works of art, classic cars, number-plates and other unique physical or intellectual property assets, the value can only be that which two parties agree upon as motivating.</p>
+            <p>For which, we mutually seek a reasoned agreement, and respectable valuation that secures the interests of the present and future owners.</p>
+            <p>The essentials domains took over 10 years to acquire, have a unique value as a collection, are distinct from any single domain valuation, and the new brand owners should enjoy building the Essentials brand that these domains will certainly make memorable.</p>
+            <ul>
+                <li><a href="https://humbleworth.com/valuation/single?domain=essentials.com" target="_blank">humbleworth.com/valuation/single?domain=essentials.com</a></li>
+            </ul>
+
+            <h3>Reference transactions</h3>
+            <p>Notable domain name sales, from those publicly reported.</p>
+            <ol class="reference-list">
+                <li>CarInsurance.com — $49,700,000</li>
+                <li>Insurance.com — $35,600,000</li>
+                <li>VacationRentals.com — $35,000,000</li>
+                <li>PrivateJet.com — $30,180,000</li>
+                <li>Voice.com — $30,000,000 (2019)</li>
+                <li>Internet.com — $18,000,000</li>
+                <li>360.com — $17,000,000</li>
+                <li>Insure.com — $16,000,000</li>
+                <li>Hotels.com — $11,000,000</li>
+                <li>Sex.com — $14,000,000</li>
+                <li>Connect.com — $10,000,000 (2022)</li>
+                <li>Fund.com — £9,990,000</li>
+                <li>Porn.com — $9,500,000</li>
+                <li>Shoes.com — $9,000,000</li>
+                <li>Porno.com — $8,800,000</li>
+                <li>Fb.com — $8,500,000</li>
+                <li>We.com — $8,000,000 (2015)</li>
+                <li>Business.com — $7,500,000</li>
+                <li>Diamond.com — $7,500,000</li>
+                <li>Beer.com — $7,000,000</li>
+                <li>Z.com — $6,800,000</li>
+                <li>iCloud.com — $6,000,000</li>
+                <li>Israel.com — $5,800,000</li>
+                <li>Casino.com — $5,500,000</li>
+                <li>Slots.com — $5,500,000</li>
+                <li>Ice.com — $3,500,000 (2018)</li>
+                <li>Hippo.com — $3,300,000 (2021)</li>
+                <li>Christmas.com — $3,150,000 (2021)</li>
+                <li>Floor.com — $3,144,000 (2021)</li>
+                <li>Whisky.com — $3,100,000 (2014)</li>
+                <li>California.com — $3,000,000 (2019)</li>
+                <li>Fly.com — $2,890,000 (2017)</li>
+                <li>Marketing.com — $2,500,000 (2021)</li>
+                <li>Forge.com — $2,202,000 (2021)</li>
+                <li>Angel.com — $2,000,000 (2021)</li>
+                <li>Wise.com — $2,000,000 (2020)</li>
+                <li>Freedom.com — $2,000,000 (2017)</li>
+                <li>Exodus.com — $1,945,000 (2021)</li>
+                <li>Better.com — $1,820,000 (2015)</li>
+                <li>Galaxy.com — $1,800,000 (2022)</li>
+                <li>Call.com — $1,600,000 (2022)</li>
+                <li>Chill.com — $1,600,000 (2022)</li>
+                <li>Gems.com — $1,500,000 (2022)</li>
+                <li>Enjoy.com — $1,500,000 (2015)</li>
+                <li>Power.com — $1,271,000 (2014)</li>
+                <li>Meme.com — $1,250,000 (2021)</li>
+                <li>Jade.com — $1,250,000 (2016)</li>
+                <li>Unlock.com — $1,228,200 (2022)</li>
+                <li>Super.com — $1,200,000 (2018)</li>
+                <li>Bullish.com — $1,080,000 (2020)</li>
+                <li>Stable.com — $1,008,925 (2022)</li>
+                <li>Ring.com — $1,000,000 (2016)</li>
+                <li>Check.com — $1,000,000 (2014)</li>
+                <li>Selfmade.com — $977,500 (2021)</li>
+                <li>Nursing.com — $950,000 (2019)</li>
+                <li>Recursion.com — $904,000 (2020)</li>
+                <li>Great.com — $900,000 (2018)</li>
+                <li>Purple.com — $900,000 (2017)</li>
+                <li>Land.com — $850,000 (2015)</li>
+                <li>Fix.com — $850,000 (2013)</li>
+                <li>Cover.com — $825,000 (2017)</li>
+                <li>Engage.com — $803,025 (2020)</li>
+                <li>Kiwi.com — $800,000 (2016)</li>
+                <li>Ava.com — $792,000 (2021)</li>
+                <li>Links.com — €700,000 (2019)</li>
+                <li>Files.com — $750,000 (2018)</li>
+                <li>Liquid.com — $750,000 (2018)</li>
+                <li>View.com — $737,000 (2018)</li>
+                <li>Rate.com — $725,000 (2016)</li>
+                <li>Teamwork.com — $675,000 (2014)</li>
+                <li>Mastermind.com — $600,000 (2019)</li>
+                <li>Medidata.com — $600,000 (2019)</li>
+                <li>Yachts.com — $600,000 (2022)</li>
+                <li>Christian.com — $600,000 (2018)</li>
+                <li>Carrot.com — $565,000 (2019)</li>
+                <li>Wolf.com — $550,000 (2021)</li>
+                <li>Lender.com — $550,000 (2021)</li>
+                <li>Inception.com — $550,000 (2018)</li>
+                <li>Place.com — $550,000 (2017)</li>
+                <li>Able.com — $542,500 (2021)</li>
+                <li>Snoring.com — $502,225 (2018)</li>
+                <li>Sleeping.com — $502,225 (2018)</li>
+                <li>Tokens.com — $500,000 (2018)</li>
+                <li>Kush.com — $500,000 (2018)</li>
+                <li>Drink.com — $500,000 (2015)</li>
+                <li>Give.com — $500,000 (2015)</li>
+                <li>Gorilla.com — $496,000 (2019)</li>
+                <li>Zag.com — $450,000 (2021)</li>
+                <li>Plants.com — $450,000 (2018)</li>
+                <li>Connection.com — $450,000 (2015)</li>
+                <li>James.com — $440,000 (2021)</li>
+                <li>Leads.com — $435,000 (2019)</li>
+                <li>Wave.com — $420,000 (2016)</li>
+                <li>Asset.com — $406,000 (2017)</li>
+                <li>Cooking.com — $402,500 (2019)</li>
+                <li>Overview.com — $400,000 (2021)</li>
+                <li>Ingles.com — $400,000 (2020)</li>
+                <li>Pilot.com — $400,000 (2017)</li>
+                <li>Pain.com — $399,000 (2018)</li>
+                <li>Steam.com — $390,560 (2021)</li>
+                <li>Broker.com — $375,000 (2016)</li>
+                <li>Rangers.com — $375,000 (2015)</li>
+                <li>Symphony.com — $375,000 (2014)</li>
+                <li>Digital.com — $373,750 (2014)</li>
+                <li>Curve.com — $360,360 (2020)</li>
+                <li>Instructor.com — $360,000 (2019)</li>
+                <li>Acquisition.com — $350,000 + commission (2022)</li>
+                <li>Pays.com — $350,000 (2022)</li>
+                <li>Portugal.com — $350,000 (2021)</li>
+                <li>Velvet.com — $350,000 (2021)</li>
+                <li>Exclusive.com — $350,000 (2020)</li>
+                <li>Arizona.com — $350,000 (2020)</li>
+                <li>Chaos.com — $350,000 (2019)</li>
+                <li>Navigator.com — $350,000 (2018)</li>
+                <li>Packet.com — $350,000 (2018)</li>
+                <li>True.com — $350,000 (2014)</li>
+                <li>Inspection.com — $335,000 (2018)</li>
+                <li>Dutch.com — $327,893 (2021)</li>
+                <li>Dots.com — $325,000 (2014)</li>
+                <li>Malls.com — $320,000 (2014)</li>
+                <li>Monero.com — $316,250 (2021)</li>
+                <li>Break.com — $315,000 (2022)</li>
+                <li>Promotion.com — $315,000 (2016)</li>
+                <li>Palace.com — $306,000 (2020)</li>
+                <li>Strength.com — $300,001 (2018)</li>
+                <li>Names.com — $300,000 (2021)</li>
+                <li>Badger.com — $300,000 (2021)</li>
+                <li>Joyride.com — $300,000 (2019)</li>
+                <li>Signet.com — $300,000 (2018)</li>
+                <li>Advance.com — $300,000 (2017)</li>
+                <li>Quick.com — $299,000 (2016)</li>
+                <li>Maxima.com — $295,000 (2021)</li>
+                <li>Trainer.com — $290,000 (2021)</li>
+                <li>Single.com — $290,000 (2016)</li>
+                <li>Accommodation.com — $286,000 (2014)</li>
+                <li>Fora.com — $285,000 (2019)</li>
+                <li>Bowman.com — $281,000 (2021)</li>
+                <li>Aftermarket.com — $280,001 (2021)</li>
+                <li>Monetary.com — $277,447 (2020)</li>
+                <li>Kick.com — $276,077 (2020)</li>
+                <li>Mastermind.com — $275,000 (2018)</li>
+                <li>Important.com — $270,000 (2021)</li>
+                <li>Canadian.com — $269,000 (2021)</li>
+                <li>Results.com — $264,000 (2019)</li>
+                <li>Calculator.com — $250,899 (2018)</li>
+                <li>Laura.com — $250,000 (2022)</li>
+                <li>Bobber.com — $250,000 (2022)</li>
+                <li>Laced.com — $250,000 (2021)</li>
+                <li>Taxes.com — $250,000 (2019)</li>
+                <li>Essential.com — $250,000 (2015)</li>
+                <li>Clash.com — $250,000 (2016)</li>
+                <li>Cumberland.com — $250,000 (2019)</li>
+                <li>Lawn.com — $240,000 (2016)</li>
+                <li>Same.com — $233,333 (2015)</li>
+                <li>Haze.com — $230,000 (2019)</li>
+                <li>Kindness.com — $227,002 (2022)</li>
+                <li>Picture.com — $225,000 (2020)</li>
+                <li>Agenda.com — $225,000 (2017)</li>
+                <li>Sideline.com — $225,000 (2016)</li>
+                <li>Patience.com — $221,780 (2022)</li>
+                <li>Triple.com — $220,000 (2021)</li>
+                <li>Arriba.com — $200,000 (2021)</li>
+                <li>Let.com — $200,000 (2021)</li>
+                <li>Believe.com — $200,000 (2020)</li>
+                <li>Profitable.com — $200,000 (2020)</li>
+                <li>Courier.com — $200,000 (2020)</li>
+                <li>Neighbor.com — $200,000 (2018)</li>
+                <li>Say.com — $200,000 (2015)</li>
+                <li>Bath.com — $195,000 (2020)</li>
+                <li>Message.com — $195,000 (2019)</li>
+                <li>Operate.com — $190,000 (2021)</li>
+                <li>Hybrid.com — $190,000 (2018)</li>
+                <li>Threat.com — $186,000 (2021)</li>
+                <li>Crystals.com — $188,000 (2019)</li>
+                <li>Listing.com — $180,000 (2021)</li>
+                <li>Stretch.com — $180,000 (2020)</li>
+                <li>Handle.com — $180,000 (2019)</li>
+                <li>Amber.com — $180,000 (2015)</li>
+                <li>Physician.com — $179,000 (2017)</li>
+                <li>Prove.com — $175,000 (2020)</li>
+                <li>Unchained.com — $174,999 (2021)</li>
+                <li>Classic.com — $172,500 (2015)</li>
+                <li>Deposit.com — $170,100 (2018)</li>
+                <li>Debit.com — $170,000 (2016)</li>
+                <li>Dealmaker.com — $168,000 (2021)</li>
+                <li>Fume.com — $160,000 (2021)</li>
+                <li>Glance.com — $160,000 (2019)</li>
+                <li>Strawberry.com — $160,000 (2016)</li>
+                <li>Supernatural.com — $160,000 (2018)</li>
+                <li>Scottish.com — $155,000 (2021)</li>
+                <li>Can.com — $155,000 (2018)</li>
+                <li>Fanbase.com — $151,000 (2020)</li>
+                <li>Chronic.com — $150,000 (2021)</li>
+                <li>Poke.com — $150,000 (2021)</li>
+                <li>Skates.com — $150,000 (2021)</li>
+                <li>Cluster.com — $150,000 (2021)</li>
+                <li>Mules.com — $150,000 (2021)</li>
+                <li>Surround.com — $150,000 (2018)</li>
+                <li>Presto.com — $150,000 (2018)</li>
+                <li>User.com — $150,000 (2018)</li>
+                <li>Airy.com — $150,000 (2017)</li>
+                <li>Squeeze.com — $150,000 (2017)</li>
+                <li>Memento.com — $148,000 (2020)</li>
+                <li>Numb.com — $145,000 (2021)</li>
+                <li>Virus.com — $142,000 (2018)</li>
+                <li>Instructors.com — $140,000 (2019)</li>
+                <li>Edit.com — $140,000 (2018)</li>
+                <li>Cope.com — $138,000 (2021)</li>
+                <li>Snake.com — $135,000 (2019)</li>
+                <li>Wallpapers.com — $129,500 (2020)</li>
+                <li>Gradient.com — $125,001 (2017)</li>
+                <li>Elmer.com — $125,000 (2022)</li>
+                <li>Cows.com — $125,000 (2021)</li>
+                <li>Radian.com — $125,000 (2018)</li>
+                <li>Vehicle.com — $121,675 (2020)</li>
+                <li>Goon.com — $120,000 (2021)</li>
+                <li>Limit.com — $120,000 (2021)</li>
+                <li>Lendable.com — $120,000 (2020)</li>
+                <li>Buying.com — $120,000 (2018)</li>
+                <li>Avoid.com — $117,500 (2018)</li>
+                <li>Mixed.com — $115,000 (2022)</li>
+                <li>Verano.com — $115,000 (2021)</li>
+                <li>Symphonic.com — $115,000 (2021)</li>
+                <li>Plains.com — $115,000 (2020)</li>
+                <li>Import.com — $115,000 (2019)</li>
+                <li>Terry.com — $114,000 (2021)</li>
+                <li>Caretaker.com — $112,000 (2020)</li>
+                <li>Picture.com — $110,000 (2019)</li>
+                <li>Enhance.com — $110,000 (2018)</li>
+                <li>Stop.com — $110,000 (2019)</li>
+                <li>Confirm.com — $108,000 (2020)</li>
+                <li>January.com — $107,000 (2020)</li>
+                <li>Regional.com — $106,888 (2021)</li>
+                <li>Alcove.com — $105,156 (2021)</li>
+                <li>Skim.com — $105,000 (2019)</li>
+                <li>Crete.com — $105,000 (2019)</li>
+                <li>Plethora.com — $105,000 (2015)</li>
+                <li>Lows.com — $104,501 (2017)</li>
+                <li>Item.com — $102,000 (2018)</li>
+                <li>Mannequin.com — $100,000 (2022)</li>
+                <li>Wingman.com — $100,000 (2020)</li>
+                <li>Rows.com — $100,000 (2020)</li>
+                <li>Spectacle.com — $100,000 (2020)</li>
+                <li>Interlock.com — $100,000 (2020)</li>
+                <li>Winemaker.com — $100,000 (2020)</li>
+                <li>Rude.com — $100,000 (2019)</li>
+                <li>Role.com — $100,000 (2019)</li>
+                <li>Katie.com — $100,000 (2019)</li>
+                <li>Chivalry.com — $100,000 (2018)</li>
+                <li>Hosts.com — $100,000 (2018)</li>
+                <li>Providers.com — $100,000 (2018)</li>
+                <li>Pack.com — $100,000 (2017)</li>
+                <li>Mommy.com — $100,000 (2017)</li>
+            </ol>
+
+            <h3>Reference links</h3>
+            <ul>
+                <li><a href="https://godaddy.com/garage/the-top-20-most-expensive-domain-names/" target="_blank">godaddy.com/garage/the-top-20-most-expensive-domain-names/</a></li>
+                <li><a href="https://namecorp.com/most-expensive-domain-name-sales-of-all-time/" target="_blank">namecorp.com/most-expensive-domain-name-sales-of-all-time/</a></li>
+                <li>"Cars.com was valued at $872 million"</li>
+                <li><a href="https://sec.gov/Archives/edgar/data/39899/000003989915000006/gci-20141228x10k.htm" target="_blank">sec.gov/Archives/edgar/data/39899/...</a></li>
+                <li><a href="https://embrace.com/recent-one-word-com-domain-name-sales/" target="_blank">embrace.com/recent-one-word-com-domain-name-sales/</a></li>
+            </ul>
+        </div>
+    </div>
+    <nav class="domains" id="domains-nav"></nav>
+
+    <script>
+        const allDomains = [
+            { name: 'ESSENTIALS.COM', url: 'https://essentials.com' },
+            { name: 'ESSENTIALS.CO.UK', url: 'https://essentials.co.uk' },
+            { name: 'ESSENTIALS.UK', url: 'https://essentials.uk' },
+            { name: 'ESSENTIALS.NET', url: 'https://essentials.net' },
+            { name: 'ESSENTIALS.EU', url: 'https://essentials.eu' },
+            { name: 'ESSENTIALS.US', url: 'https://essentials.us' },
+            { name: 'ESSENTIALS.FR', url: 'https://essentials.fr' },
+            { name: 'ESSENTIALS.CN', url: 'https://essentials.cn' },
+            { name: 'ESSENTIALS.HK', url: 'https://essentials.hk' },
+            { name: 'ESSENTIALS.TW', url: 'https://essentials.tw' }
+        ];
+
+        const isLocal = ['localhost', '127.0.0.1', ''].includes(window.location.hostname) || 
+                        window.location.protocol === 'file:';
+
+        function getCurrentDomain() {
+            // Check URL parameter for local testing
+            if (isLocal) {
+                const params = new URLSearchParams(window.location.search);
+                const testDomain = params.get('domain');
+                if (testDomain) {
+                    const found = allDomains.find(d => d.name.toUpperCase() === testDomain.toUpperCase());
+                    if (found) return found;
+                }
+            }
+            
+            const hostname = window.location.hostname.toUpperCase();
+            const found = allDomains.find(d => d.url.toUpperCase().includes(hostname));
+            return found || allDomains[0];
+        }
+
+        function createStyledText(text) {
+            const fragment = document.createDocumentFragment();
+            
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                const span = document.createElement('span');
+                span.textContent = char;
+                
+                if (char === '.') {
+                    span.className = 'char dot';
+                } else if (char === 'C') {
+                    span.className = 'char char-c';
+                } else {
+                    span.className = 'char';
+                }
+                
+                fragment.appendChild(span);
+            }
+            
+            return fragment;
+        }
+
+        function updateMetaTag(selector, attribute, value) {
+            const el = document.querySelector(selector);
+            if (el) el.setAttribute(attribute, value);
+        }
+
+        function render() {
+            const currentDomain = getCurrentDomain();
+            const otherDomains = allDomains.filter(d => d.name !== currentDomain.name);
+            const domainName = currentDomain.name.toLowerCase();
+            const domainUrl = currentDomain.url;
+            const description = `Premium domain portfolio featuring ${domainName} and international TLDs. A rare collection of one-word domains for a trusted global brand.`;
+
+            // Render main logo
+            const logoEl = document.getElementById('main-logo');
+            logoEl.innerHTML = '';
+            logoEl.appendChild(createStyledText(currentDomain.name));
+
+            // Update page title and SEO meta tags
+            document.title = currentDomain.name;
+            updateMetaTag('meta[name="description"]', 'content', description);
+            updateMetaTag('link[rel="canonical"]', 'href', domainUrl);
+            updateMetaTag('meta[property="og:title"]', 'content', currentDomain.name);
+            updateMetaTag('meta[property="og:description"]', 'content', description);
+            updateMetaTag('meta[property="og:url"]', 'content', domainUrl);
+            updateMetaTag('meta[name="twitter:title"]', 'content', currentDomain.name);
+            updateMetaTag('meta[name="twitter:description"]', 'content', description);
+
+            // Render CTA links with current domain
+            const ctaLinksEl = document.getElementById('cta-links');
+            ctaLinksEl.innerHTML = `
+                <a href="https://ahrefs.com/website-authority-checker/?input=${domainName}" target="_blank">Check Domain Rank</a>
+                <a href="https://ahrefs.com/traffic-checker/?input=${domainName}&mode=subdomains" target="_blank">Check Website Traffic</a>
+                <a href="https://chromewebstore.google.com/detail/ahrefs-seo-toolbar/hgmoccdbjhknikckedaaebbpdeebhiei" target="_blank">Use Ahrefs Chrome Extension</a>
+            `;
+
+            // Render domain links
+            const navEl = document.getElementById('domains-nav');
+            navEl.innerHTML = '';
+            
+            otherDomains.forEach(domain => {
+                const link = document.createElement('a');
+                // Use query param for local testing, real URL when live
+                link.href = isLocal ? `?domain=${domain.name}` : domain.url;
+                link.appendChild(createStyledText(domain.name));
+                navEl.appendChild(link);
+            });
+        }
+
+        render();
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+
+        // Check for saved preference or system preference
+        function getPreferredTheme() {
+            const saved = localStorage.getItem('theme');
+            if (saved) return saved;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function setTheme(theme) {
+            root.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        // Initialize theme
+        setTheme(getPreferredTheme());
+
+        themeToggle.addEventListener('click', () => {
+            const current = root.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+
+        // Modal
+        const modalOverlay = document.getElementById('modal-overlay');
+        const openModalBtn = document.getElementById('open-modal');
+        const closeModalBtn = document.getElementById('modal-close');
+
+        function openModal() {
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Random dot color on click
+        (function() {
+            // Calculate relative luminance for contrast ratio
+            function getLuminance(r, g, b) {
+                const [rs, gs, bs] = [r, g, b].map(c => {
+                    c = c / 255;
+                    return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+                });
+                return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+            }
+
+            // Calculate contrast ratio between two colors
+            function getContrastRatio(l1, l2) {
+                const lighter = Math.max(l1, l2);
+                const darker = Math.min(l1, l2);
+                return (lighter + 0.05) / (darker + 0.05);
+            }
+
+            // Generate random color with good contrast against background
+            function getRandomContrastColor() {
+                const isDark = root.getAttribute('data-theme') === 'dark' || 
+                    (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                const bgLuminance = isDark ? 0 : 1;
+                const minContrast = 4.5; // WCAG AA standard
+                
+                let attempts = 0;
+                while (attempts < 100) {
+                    const r = Math.floor(Math.random() * 256);
+                    const g = Math.floor(Math.random() * 256);
+                    const b = Math.floor(Math.random() * 256);
+                    const luminance = getLuminance(r, g, b);
+                    const contrast = getContrastRatio(luminance, bgLuminance);
+                    
+                    if (contrast >= minContrast) {
+                        return `rgb(${r}, ${g}, ${b})`;
+                    }
+                    attempts++;
+                }
+                // Fallback to original orange
+                return '#FF6A00';
+            }
+
+            // Add click handler to logo dots
+            document.getElementById('main-logo').addEventListener('click', (e) => {
+                if (e.target.classList.contains('dot')) {
+                    const newColor = getRandomContrastColor();
+                    document.documentElement.style.setProperty('--dot-color', newColor);
+                }
+            });
+        })();
+
+        // Cycle text case on click (UPPER → Title → lower)
+        (function() {
+            const cases = ['upper', 'title', 'lower'];
+            let currentCaseIndex = 0;
+
+            function updateLogoCase() {
+                const logoEl = document.getElementById('main-logo');
+                const chars = logoEl.querySelectorAll('.char');
+                const currentCase = cases[currentCaseIndex];
+                let isStartOfWord = true;
+                let afterFirstDot = false;
+                
+                chars.forEach(span => {
+                    const char = span.textContent;
+                    
+                    if (span.classList.contains('dot')) {
+                        isStartOfWord = true;
+                        afterFirstDot = true; // Everything after first dot is the extension
+                        return;
+                    }
+                    
+                    switch (currentCase) {
+                        case 'upper':
+                            span.textContent = char.toUpperCase();
+                            break;
+                        case 'title':
+                            // Extension (after first dot) is always lowercase
+                            if (afterFirstDot) {
+                                span.textContent = char.toLowerCase();
+                            } else {
+                                span.textContent = isStartOfWord ? char.toUpperCase() : char.toLowerCase();
+                                isStartOfWord = false;
+                            }
+                            break;
+                        case 'lower':
+                            span.textContent = char.toLowerCase();
+                            break;
+                    }
+                });
+            }
+
+            document.getElementById('main-logo').addEventListener('click', (e) => {
+                if (e.target.classList.contains('char') && !e.target.classList.contains('dot')) {
+                    currentCaseIndex = (currentCaseIndex + 1) % cases.length;
+                    updateLogoCase();
+                }
+            });
+        })();
+
+        // Prefetch fonts on hover over domain links to eliminate font swap on next page
+        (function() {
+            let fontsPrefetched = false;
+            const fontUrls = [
+                'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2',
+                'https://fonts.gstatic.com/s/intertight/v7/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mjDw6qXCRToK8EPg.woff2'
+            ];
+
+            function prefetchFonts() {
+                if (fontsPrefetched) return;
+                fontsPrefetched = true;
+                
+                fontUrls.forEach(url => {
+                    const link = document.createElement('link');
+                    link.rel = 'prefetch';
+                    link.href = url;
+                    link.as = 'font';
+                    link.type = 'font/woff2';
+                    link.crossOrigin = 'anonymous';
+                    document.head.appendChild(link);
+                });
+            }
+
+            // Add hover listeners to domain nav links
+            const navEl = document.getElementById('domains-nav');
+            navEl.addEventListener('mouseenter', prefetchFonts, { once: true, capture: true });
+            navEl.addEventListener('touchstart', prefetchFonts, { once: true, passive: true });
+        })();
+    </script>
+</body>
+</html>
