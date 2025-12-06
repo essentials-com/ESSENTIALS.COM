@@ -294,11 +294,30 @@
             margin-bottom: 0.5rem;
         }
 
-        .traffic-header .total {
+        .traffic-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .traffic-stats .stat {
+            display: flex;
+            align-items: baseline;
+            gap: 0.2rem;
+        }
+
+        .traffic-stats .stat-value {
             font-family: 'Inter Tight', 'Inter Tight Fallback', sans-serif;
             font-weight: 900;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--dot-color);
+        }
+
+        .traffic-stats .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.6;
         }
 
         .chart-container {
@@ -920,9 +939,14 @@
     </div>
     <section class="traffic-section" id="traffic-section">
         <div class="traffic-header">
-            <h2>Annual Unique Visitors</h2>
+            <h2>Unique Visitors</h2>
             <div class="source">(Cloudflare)</div>
-            <div class="total" id="traffic-total">0</div>
+            <div class="traffic-stats" id="traffic-stats">
+                <div class="stat"><span class="stat-value" id="stat-day">0</span><span class="stat-label">/day</span></div>
+                <div class="stat"><span class="stat-value" id="stat-week">0</span><span class="stat-label">/week</span></div>
+                <div class="stat"><span class="stat-value" id="stat-month">0</span><span class="stat-label">/month</span></div>
+                <div class="stat"><span class="stat-value" id="stat-year">0</span><span class="stat-label">/year</span></div>
+            </div>
         </div>
         <div class="chart-container" id="chart-container"></div>
         <div class="chart-labels">
@@ -1229,7 +1253,6 @@
                 const container = document.getElementById('chart-container');
                 const legend = document.getElementById('chart-legend');
                 const tooltip = document.getElementById('chart-tooltip');
-                const totalEl = document.getElementById('traffic-total');
                 const dateStartEl = document.getElementById('chart-date-start');
                 const dateEndEl = document.getElementById('chart-date-end');
                 
@@ -1243,19 +1266,42 @@
                     return dayTotal;
                 }));
 
-                // Update total - extrapolate to annual based on complete days (exclude today unless it's the only day)
-                const today = new Date().toISOString().split('T')[0];
+                // Calculate daily average from complete days, or extrapolate from partial day
+                const now = new Date();
+                const today = now.toISOString().split('T')[0];
+                const currentHour = now.getUTCHours();
+                
                 const daysWithData = data.filter(day => Object.keys(day.domains).length > 0);
                 const completeDays = daysWithData.filter(day => day.date !== today);
+                const todayData = daysWithData.find(day => day.date === today);
                 
-                // Use complete days if available, otherwise use today's partial data
-                const daysToUse = completeDays.length > 0 ? completeDays : daysWithData;
-                const daysTotal = daysToUse.reduce((sum, day) => 
-                    sum + Object.values(day.domains).reduce((a, b) => a + b, 0), 0
-                );
-                const actualDays = daysToUse.length || 1; // Avoid division by zero
-                const annualEstimate = Math.round(daysTotal * (365 / actualDays));
-                totalEl.textContent = annualEstimate.toLocaleString() + ' visits';
+                let dailyAverage;
+                if (completeDays.length > 0) {
+                    // Use average of complete days
+                    const completeDaysTotal = completeDays.reduce((sum, day) => 
+                        sum + Object.values(day.domains).reduce((a, b) => a + b, 0), 0
+                    );
+                    dailyAverage = completeDaysTotal / completeDays.length;
+                } else if (todayData) {
+                    // Extrapolate from partial day (hours elapsed)
+                    const todayTotal = Object.values(todayData.domains).reduce((a, b) => a + b, 0);
+                    const hoursElapsed = currentHour || 1; // Avoid division by zero
+                    dailyAverage = (todayTotal / hoursElapsed) * 24;
+                } else {
+                    dailyAverage = 0;
+                }
+                
+                // Calculate all time periods
+                const perDay = Math.round(dailyAverage);
+                const perWeek = Math.round(dailyAverage * 7);
+                const perMonth = Math.round(dailyAverage * 30);
+                const perYear = Math.round(dailyAverage * 365);
+                
+                // Update stats display
+                document.getElementById('stat-day').textContent = perDay.toLocaleString();
+                document.getElementById('stat-week').textContent = perWeek.toLocaleString();
+                document.getElementById('stat-month').textContent = perMonth.toLocaleString();
+                document.getElementById('stat-year').textContent = perYear.toLocaleString();
 
                 // Update date labels
                 const formatDate = (dateStr) => {
