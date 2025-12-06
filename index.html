@@ -325,6 +325,14 @@
             transition: height 0.3s ease;
         }
 
+        .chart-bar .day-label {
+            font-size: 0.55rem;
+            text-align: center;
+            opacity: 0.4;
+            padding-top: 0.3rem;
+            font-weight: 600;
+        }
+
         .chart-labels {
             display: flex;
             justify-content: space-between;
@@ -1203,6 +1211,10 @@
                     const d = new Date(dateStr);
                     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
                 };
+                const formatDay = (dateStr) => {
+                    const d = new Date(dateStr);
+                    return d.toLocaleDateString('en-GB', { weekday: 'short' }).charAt(0);
+                };
                 dateStartEl.textContent = formatDate(data[0].date);
                 dateEndEl.textContent = formatDate(data[data.length - 1].date);
 
@@ -1212,6 +1224,12 @@
                     const bar = document.createElement('div');
                     bar.className = 'chart-bar';
                     bar.dataset.index = index;
+                    
+                    // Add day label
+                    const dayLabel = document.createElement('div');
+                    dayLabel.className = 'day-label';
+                    dayLabel.textContent = formatDay(day.date);
+                    bar.appendChild(dayLabel);
                     
                     const domains = Object.keys(domainColors);
                     domains.forEach(domain => {
