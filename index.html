@@ -1106,8 +1106,40 @@
 
         // Traffic Chart
         (function() {
-            // Generate colors based on primary orange with brightness variations
-            // Works in both light and dark modes
+            // Convert any color to HSL
+            function colorToHSL(color) {
+                const temp = document.createElement('div');
+                temp.style.color = color;
+                document.body.appendChild(temp);
+                const computed = getComputedStyle(temp).color;
+                document.body.removeChild(temp);
+                
+                const match = computed.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+                if (!match) return { h: 25, s: 90, l: 50 }; // Default orange
+                
+                let r = parseInt(match[1]) / 255;
+                let g = parseInt(match[2]) / 255;
+                let b = parseInt(match[3]) / 255;
+                
+                const max = Math.max(r, g, b), min = Math.min(r, g, b);
+                let h, s, l = (max + min) / 2;
+                
+                if (max === min) {
+                    h = s = 0;
+                } else {
+                    const d = max - min;
+                    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                    switch (max) {
+                        case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+                        case g: h = ((b - r) / d + 2) / 6; break;
+                        case b: h = ((r - g) / d + 4) / 6; break;
+                    }
+                }
+                
+                return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+            }
+            
+            // Generate colors based on current dot-color with brightness variations
             function getDomainColors() {
                 const domains = [
                     'essentials.com',
@@ -1126,16 +1158,18 @@
                 const isDark = root.getAttribute('data-theme') === 'dark' || 
                     (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
                 
+                // Get current dot color's hue
+                const dotColor = getComputedStyle(document.documentElement).getPropertyValue('--dot-color').trim();
+                const hsl = colorToHSL(dotColor);
+                
                 const colors = {};
                 const count = domains.length;
                 
                 domains.forEach((domain, i) => {
-                    // Base hue is orange (25-30)
-                    const hue = 25;
+                    const hue = hsl.h;
                     // Vary saturation slightly for differentiation
                     const saturation = 85 + (i % 3) * 5;
                     // Spread lightness across range that works for both modes
-                    // Dark mode: lighter colors (50-80%), Light mode: darker colors (35-65%)
                     const minL = isDark ? 45 : 30;
                     const maxL = isDark ? 75 : 60;
                     const lightness = minL + ((maxL - minL) * (i / (count - 1)));
@@ -1318,6 +1352,12 @@
                     });
             }
             
+            // Expose refresh function globally
+            window.refreshChartColors = function() {
+                domainColors = getDomainColors();
+                if (currentChartData) renderChart(currentChartData);
+            };
+            
             initChart();
         })();
 
@@ -1368,6 +1408,8 @@
                 if (e.target.classList.contains('dot')) {
                     const newColor = getRandomContrastColor();
                     document.documentElement.style.setProperty('--dot-color', newColor);
+                    // Update chart colors to match
+                    if (window.refreshChartColors) window.refreshChartColors();
                 }
             });
         })();
