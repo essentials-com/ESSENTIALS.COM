@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESSENTIALS.COM</title>
+    <title>ESSENTIALS - ESSENTIALS.COM</title>
     <meta name="description" content="Premium domain portfolio featuring essentials.com and international TLDs. A rare collection of one-word domains for a trusted global brand.">
     <meta name="keywords" content="essentials, domain, premium domain, domain for sale, one-word domain, brand domain, essentials.com">
     <meta name="author" content="Essentials">
@@ -619,7 +619,7 @@
         </svg>
     </button>
     <div class="logo-container">
-        <div class="logo" id="main-logo"></div>
+        <h1 class="logo" id="main-logo"></h1>
     </div>
     <div class="cta-section">
         <button class="cta" id="open-modal">Domains for sale or lease</button>
@@ -1034,7 +1034,7 @@
             logoEl.appendChild(createStyledText(currentDomain.name));
 
             // Update page title and SEO meta tags
-            document.title = currentDomain.name;
+            document.title = `ESSENTIALS - ${currentDomain.name}`;
             updateMetaTag('meta[name="description"]', 'content', description);
             updateMetaTag('link[rel="canonical"]', 'href', domainUrl);
             updateMetaTag('meta[property="og:title"]', 'content', currentDomain.name);
