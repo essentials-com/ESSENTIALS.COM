@@ -1209,10 +1209,16 @@
                     return dayTotal;
                 }));
 
-                // Update total - extrapolate to annual based on days with actual data
-                const daysWithData = data.filter(day => Object.keys(day.domains).length > 0).length;
-                const actualDays = daysWithData || 1; // Avoid division by zero
-                const annualEstimate = Math.round(grandTotal * (365 / actualDays));
+                // Update total - extrapolate to annual based on complete days only (exclude today)
+                const today = new Date().toISOString().split('T')[0];
+                const completeDays = data.filter(day => 
+                    Object.keys(day.domains).length > 0 && day.date !== today
+                );
+                const completeDaysTotal = completeDays.reduce((sum, day) => 
+                    sum + Object.values(day.domains).reduce((a, b) => a + b, 0), 0
+                );
+                const actualDays = completeDays.length || 1; // Avoid division by zero
+                const annualEstimate = Math.round(completeDaysTotal * (365 / actualDays));
                 totalEl.textContent = annualEstimate.toLocaleString() + ' visits';
 
                 // Update date labels
