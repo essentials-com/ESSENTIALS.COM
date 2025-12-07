@@ -130,12 +130,12 @@
     "domains": {
       "essentials.com": 80,
       "essentials.net": 8,
-      "essentials.co.uk": 9,
+      "essentials.co.uk": 10,
       "essentials.uk": 8,
-      "essentials.eu": 6,
+      "essentials.eu": 7,
       "essentials.us": 12,
       "essentials.fr": 9,
-      "essentials.tw": 6,
+      "essentials.tw": 7,
       "essentials.mobi": 5
     }
   }
