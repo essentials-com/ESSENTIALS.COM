@@ -35,7 +35,26 @@ For each domain you want to track:
 3. Click **Add a site** and enter your domain
 4. Copy the **Site Tag** for each domain (you'll need these later)
 
-### 3. Create the Stats Worker
+### 3. Create Required API Tokens
+
+**Cloudflare API Token:**
+1. Go to [Cloudflare API Tokens](https://dash.cloudflare.com/profile/api-tokens)
+2. Click **Create Token**
+3. Use **Custom Token** with:
+   - Permissions: `Analytics:Read`
+   - Account Resources: Your account
+4. Copy the token
+
+**Cloudflare Account ID:**
+- Found in your Cloudflare dashboard URL or on the Overview page of any zone
+
+**GitHub Personal Access Token:**
+1. Go to [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens)
+2. Click **Generate new token (classic)**
+3. Select scope: `repo` (full control)
+4. Copy the token
+
+### 4. Create the Stats Worker
 
 Give your AI assistant this prompt:
 
@@ -49,11 +68,11 @@ Create a Cloudflare Worker called "domain-stats" that:
    [LIST YOUR DOMAINS AND THEIR SITE TAGS]
 4. Commits the results as stats.json to my GitHub repository
 
-Required secrets for the Worker:
-- CF_API_TOKEN: Cloudflare API token with Analytics:Read permission
-- CF_ACCOUNT_ID: Your Cloudflare account ID
-- GITHUB_TOKEN: GitHub personal access token with repo write access
-- GITHUB_REPO: Your repo in format "username/repo-name"
+Configure these secrets for the Worker:
+- CF_API_TOKEN: [YOUR CLOUDFLARE API TOKEN]
+- CF_ACCOUNT_ID: [YOUR CLOUDFLARE ACCOUNT ID]
+- GITHUB_TOKEN: [YOUR GITHUB PERSONAL ACCESS TOKEN]
+- GITHUB_REPO: [YOUR REPO, e.g. username/repo-name]
 
 The stats.json format should be:
 [
@@ -70,31 +89,7 @@ Use the Web Analytics RUM API (rumPageloadEventsAdaptiveGroups) NOT Zone
 Analytics (httpRequests1dGroups) - this ensures bot traffic is excluded.
 ```
 
-### 4. Create Required API Tokens
-
-**Cloudflare API Token:**
-1. Go to [Cloudflare API Tokens](https://dash.cloudflare.com/profile/api-tokens)
-2. Click **Create Token**
-3. Use **Custom Token** with:
-   - Permissions: `Analytics:Read`
-   - Account Resources: Your account
-4. Copy the token
-
-**GitHub Personal Access Token:**
-1. Go to [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens)
-2. Click **Generate new token (classic)**
-3. Select scope: `repo` (full control)
-4. Copy the token
-
-### 5. Configure the Worker
-
-Add these secrets to your Cloudflare Worker:
-- `CF_API_TOKEN` - Your Cloudflare API token
-- `CF_ACCOUNT_ID` - Found in Cloudflare dashboard URL or Overview page
-- `GITHUB_TOKEN` - Your GitHub personal access token
-- `GITHUB_REPO` - Format: `username/repo-name`
-
-### 6. Customize
+### 5. Customize
 
 Edit `index.html` to update:
 - Domain list in the `allDomains` array
