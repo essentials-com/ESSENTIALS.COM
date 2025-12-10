@@ -1421,23 +1421,33 @@
                     bar.className = 'chart-bar';
                     bar.dataset.index = index;
                     
-                    // Add day label
-                    const dayLabel = document.createElement('div');
-                    dayLabel.className = 'day-label';
-                    dayLabel.textContent = formatDay(day.date);
-                    bar.appendChild(dayLabel);
+                    // Create segments container
+                    const segmentsContainer = document.createElement('div');
+                    segmentsContainer.className = 'segments';
+                    segmentsContainer.style.display = 'flex';
+                    segmentsContainer.style.flexDirection = 'column';
+                    segmentsContainer.style.justifyContent = 'flex-end';
+                    segmentsContainer.style.flex = '1';
                     
                     const domains = Object.keys(domainColors);
                     domains.forEach(domain => {
                         const value = day.domains[domain] || 0;
-                        const height = (value / maxDayTotal) * 100;
+                        const height = maxDayTotal > 0 ? (value / maxDayTotal) * 100 : 0;
                         
                         const segment = document.createElement('div');
                         segment.className = 'segment';
                         segment.style.height = height + '%';
                         segment.style.backgroundColor = domainColors[domain];
-                        bar.appendChild(segment);
+                        segmentsContainer.appendChild(segment);
                     });
+                    
+                    bar.appendChild(segmentsContainer);
+                    
+                    // Add day label at bottom
+                    const dayLabel = document.createElement('div');
+                    dayLabel.className = 'day-label';
+                    dayLabel.textContent = formatDay(day.date);
+                    bar.appendChild(dayLabel);
                     
                     // Tooltip events
                     bar.addEventListener('mouseenter', (e) => {
