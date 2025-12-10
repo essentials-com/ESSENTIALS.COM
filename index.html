@@ -1096,7 +1096,7 @@
             { name: 'ESSENTIALS.EU', url: 'https://www.essentials.eu' },
             { name: 'ESSENTIALS.US', url: 'https://www.essentials.us' },
             { name: 'ESSENTIALS.FR', url: 'https://www.essentials.fr' },
-            { name: 'ESSENTIALS.CN', url: 'https://www.essentials.cn' },
+            { name: 'ESSENTIALS.CN', url: 'https://www.essentials.com' },
             { name: 'ESSENTIALS.HK', url: 'https://www.essentials.hk' },
             { name: 'ESSENTIALS.TW', url: 'https://www.essentials.tw' },
             { name: 'ESSENTIALS.MOBI', url: 'https://www.essentials.mobi' }
@@ -1699,11 +1699,19 @@
                 return dotIndex !== -1 && targetIndex > dotIndex;
             }
 
+            // Domains to skip in rotation (DNS not available)
+            const skipDomains = ['ESSENTIALS.CN'];
+            
             function navigateToNextDomain() {
                 const currentDomain = getCurrentDomain();
-                const currentIndex = allDomains.findIndex(d => d.name === currentDomain.name);
-                const nextIndex = (currentIndex + 1) % allDomains.length;
-                const nextDomain = allDomains[nextIndex];
+                let currentIndex = allDomains.findIndex(d => d.name === currentDomain.name);
+                let nextDomain;
+                
+                // Find next domain that's not in skip list
+                do {
+                    currentIndex = (currentIndex + 1) % allDomains.length;
+                    nextDomain = allDomains[currentIndex];
+                } while (skipDomains.includes(nextDomain.name));
                 
                 if (isLocal) {
                     history.pushState({}, '', `?domain=${nextDomain.name}`);
