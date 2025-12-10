@@ -1500,6 +1500,31 @@
                         tooltip.classList.remove('visible');
                     });
                     
+                    // Touch support: tap to show, tap elsewhere to hide
+                    bar.addEventListener('touchstart', (e) => {
+                        e.preventDefault();
+                        const dayTotal = Object.values(day.domains).reduce((a, b) => a + b, 0);
+                        let html = `<div class="date">${formatDate(day.date)}</div>`;
+                        html += `<div style="font-weight:700;margin-bottom:0.3rem">Total: ${dayTotal.toLocaleString()}</div>`;
+                        
+                        Object.entries(day.domains)
+                            .sort((a, b) => b[1] - a[1])
+                            .forEach(([domain, value]) => {
+                                html += `<div class="domain-stat">
+                                    <span class="color" style="background:${domainColors[domain]}"></span>
+                                    <span>${domain}: ${value.toLocaleString()}</span>
+                                </div>`;
+                            });
+                        
+                        tooltip.innerHTML = html;
+                        tooltip.classList.add('visible');
+                        
+                        // Position tooltip in center of screen on mobile
+                        const tooltipRect = tooltip.getBoundingClientRect();
+                        tooltip.style.left = Math.max(10, (window.innerWidth - tooltipRect.width) / 2) + 'px';
+                        tooltip.style.top = Math.max(10, (window.innerHeight - tooltipRect.height) / 2) + 'px';
+                    });
+                    
                     container.appendChild(bar);
                 });
 
@@ -1510,6 +1535,13 @@
                     item.className = 'legend-item';
                     item.innerHTML = `<span class="legend-color" style="background:${color}"></span><span>${domain}</span>`;
                     legend.appendChild(item);
+                });
+                
+                // Hide tooltip when tapping outside chart on mobile
+                document.addEventListener('touchstart', (e) => {
+                    if (!container.contains(e.target) && !tooltip.contains(e.target)) {
+                        tooltip.classList.remove('visible');
+                    }
                 });
             }
 
