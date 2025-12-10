@@ -1469,8 +1469,31 @@
                     });
                     
                     bar.addEventListener('mousemove', (e) => {
-                        tooltip.style.left = (e.clientX + 10) + 'px';
-                        tooltip.style.top = (e.clientY - 10) + 'px';
+                        const tooltipRect = tooltip.getBoundingClientRect();
+                        const viewportWidth = window.innerWidth;
+                        const viewportHeight = window.innerHeight;
+                        
+                        let left = e.clientX + 10;
+                        let top = e.clientY - 10;
+                        
+                        // Keep tooltip within viewport horizontally
+                        if (left + tooltipRect.width > viewportWidth - 10) {
+                            left = e.clientX - tooltipRect.width - 10;
+                        }
+                        if (left < 10) {
+                            left = 10;
+                        }
+                        
+                        // Keep tooltip within viewport vertically
+                        if (top + tooltipRect.height > viewportHeight - 10) {
+                            top = viewportHeight - tooltipRect.height - 10;
+                        }
+                        if (top < 10) {
+                            top = 10;
+                        }
+                        
+                        tooltip.style.left = left + 'px';
+                        tooltip.style.top = top + 'px';
                     });
                     
                     bar.addEventListener('mouseleave', () => {
