@@ -71,12 +71,18 @@ export default {
     }
     
     // Create the Cloudflare Web Analytics beacon script for this domain
-    // The "send.to" parameter explicitly tells the beacon where to send data.
-    // This is required because the alias domains are served via this worker proxy,
-    // so they don't have the /cdn-cgi/rum endpoint that proxied Cloudflare sites have.
-    // Without this, the beacon would try to POST to /cdn-cgi/rum on the current domain,
-    // which would fail with 404 since only the origin (www.essentials.com) has that endpoint.
-    const beaconScript = `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${siteToken}","send":{"to":"https://cloudflareinsights.com/cdn-cgi/rum"}}'></script>`;
+    // The beacon config must include:
+    // - "version": Required for proper RUM endpoint routing (versions.fl in payload)
+    // - "token": The site-specific token for this domain
+    // - "send.to": Explicit endpoint since worker-proxied domains don't have /cdn-cgi/rum
+    // Without the version field, the beacon may not properly associate data with the site.
+    const beaconConfig = {
+      version: "2024.11.0",
+      token: siteToken,
+      r: 1,
+      send: { to: "https://cloudflareinsights.com/cdn-cgi/rum" }
+    };
+    const beaconScript = `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='${JSON.stringify(beaconConfig)}'></script>`;
     
     // Use HTMLRewriter to:
     // 1. Remove any existing Cloudflare beacon scripts (auto-injected by Cloudflare for essentials.com)

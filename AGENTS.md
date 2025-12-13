@@ -73,7 +73,11 @@ Cloudflare Web Analytics uses two different identifiers:
 - RUM API filters bot traffic automatically
 - The proxy worker injects the correct **site_token** for each domain's beacon
 - The stats worker queries the API using **site_tag** to fetch data
-- **Critical**: The beacon must include `"send":{"to":"https://cloudflareinsights.com/cdn-cgi/rum"}` for worker-proxied domains. Without this, the beacon tries to POST to `/cdn-cgi/rum` on the current domain, which returns 404 since only Cloudflare-proxied origins have that endpoint.
+- **Critical beacon config requirements** for worker-proxied domains:
+  - `"version"`: Must be set (e.g., "2024.11.0") for proper RUM endpoint routing. Without this, the beacon payload's `versions.fl` field is empty and data may not be properly associated with the site.
+  - `"token"`: The site-specific token for the domain
+  - `"send":{"to":"https://cloudflareinsights.com/cdn-cgi/rum"}`: Explicit endpoint since worker-proxied domains don't have the `/cdn-cgi/rum` endpoint
+  - `"r": 1`: Flag used by Cloudflare's auto-injected beacons (purpose unclear but included for compatibility)
 
 ## Stats Calculation
 
