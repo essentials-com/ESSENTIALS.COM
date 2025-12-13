@@ -71,12 +71,26 @@ export default {
     }
     
     // Create the Cloudflare Web Analytics beacon script for this domain
-    const beaconScript = `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${siteToken}"}'></script>`;
+    // The "send.to" parameter explicitly tells the beacon where to send data.
+    // This is required because the alias domains are served via this worker proxy,
+    // so they don't have the /cdn-cgi/rum endpoint that proxied Cloudflare sites have.
+    // Without this, the beacon would try to POST to /cdn-cgi/rum on the current domain,
+    // which would fail with 404 since only the origin (www.essentials.com) has that endpoint.
+    const beaconScript = `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${siteToken}","send":{"to":"https://cloudflareinsights.com/cdn-cgi/rum"}}'></script>`;
     
-    // Use HTMLRewriter to inject the beacon before </body>
+    // Use HTMLRewriter to:
+    // 1. Remove any existing Cloudflare beacon scripts (auto-injected by Cloudflare for essentials.com)
+    // 2. Inject the correct beacon for this domain
     const rewriter = new HTMLRewriter()
+      .on("script[src*='cloudflareinsights.com/beacon']", {
+        element(element) {
+          // Remove auto-injected beacon scripts
+          element.remove();
+        },
+      })
       .on("body", {
         element(element) {
+          // Inject the correct beacon for this domain
           element.append(beaconScript, { html: true });
         },
       });

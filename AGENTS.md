@@ -73,6 +73,7 @@ Cloudflare Web Analytics uses two different identifiers:
 - RUM API filters bot traffic automatically
 - The proxy worker injects the correct **site_token** for each domain's beacon
 - The stats worker queries the API using **site_tag** to fetch data
+- **Critical**: The beacon must include `"send":{"to":"https://cloudflareinsights.com/cdn-cgi/rum"}` for worker-proxied domains. Without this, the beacon tries to POST to `/cdn-cgi/rum` on the current domain, which returns 404 since only Cloudflare-proxied origins have that endpoint.
 
 ## Stats Calculation
 
